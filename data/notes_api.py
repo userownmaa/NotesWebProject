@@ -6,3 +6,9 @@ notes_page = Blueprint(
     __name__,
     template_folder='templates'
 )
+
+
+@notes_page.route('/')
+def index():
+    return '<h>home</h>'
+
