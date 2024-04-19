@@ -10,5 +10,5 @@ notes_page = Blueprint(
 
 @notes_page.route('/')
 def index():
-    return '<h>home</h>'
+    return render_template('mainpage.html')
 

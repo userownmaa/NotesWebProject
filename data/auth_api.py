@@ -13,7 +13,7 @@ def login():
     #
     # elif request.method == 'GET':
 
-    return '<h>login</h>'
+    return render_template('login.html')
 
 
 @auth_page.route('/logout')
@@ -27,4 +27,4 @@ def sign_up():
     #
     # elif request.method == 'GET':
 
-    return '<h>signup</h>'
+    return render_template('signup.html')
