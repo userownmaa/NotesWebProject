@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, flash
 
 auth_page = Blueprint(
     'auth_api',
@@ -22,9 +22,30 @@ def logout():
 
 
 @auth_page.route('/signup', methods=['GET', 'POST'])
-def sign_up():
-    # if request.method == 'POST':
-    #
-    # elif request.method == 'GET':
+def signup():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        first_name = request.form.get('first_name')
+        second_name = request.form.get('second_name')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+
+        if '@' not in email:
+            flash('Некорректный адрес почты', category='error')
+        elif len(email) < 3:
+            flash('Длина адреса почты должна быть не менее 3 символов', category='error')
+        # если почта уже есть в базе
+        elif len(password1) < 8:
+            flash('Длина пароля должна быть не менее 8 символов', category='error')
+        elif len(password1) > 100:
+            flash('Длина пароля должна быть менее 100 символов', category='error')
+        elif password1 != password2:
+            flash('Пароли не совпадают', category='error')
+        else:
+            flash('Аккаунт создан', category='success')
+
+    #         добавить пользователя
+    elif request.method == 'GET':
+        pass
 
     return render_template('signup.html')

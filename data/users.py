@@ -3,7 +3,7 @@ from sqlalchemy.util.preloaded import orm
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin
 
-from .db_session import SqlAlchemyBase
+from db_session import SqlAlchemyBase
 
 
 class User(SqlAlchemyBase, UserMixin, SerializerMixin):
