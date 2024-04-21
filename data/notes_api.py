@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_user, login_required, logout_user, current_user
 
 
 notes_page = Blueprint(
@@ -9,6 +10,7 @@ notes_page = Blueprint(
 
 
 @notes_page.route('/')
-def index():
-    return render_template('notes.html')
+@login_required
+def notes():
+    return render_template('notes.html', user=current_user)
 

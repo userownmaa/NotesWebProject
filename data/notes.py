@@ -5,7 +5,7 @@ from sqlalchemy import orm
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin
 
-from db_session import SqlAlchemyBase
+from .db_session import SqlAlchemyBase
 
 
 class Notes(SqlAlchemyBase, UserMixin, SerializerMixin):
@@ -13,7 +13,7 @@ class Notes(SqlAlchemyBase, UserMixin, SerializerMixin):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    content = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    content = sqlalchemy.Column(sqlalchemy.String(10000), nullable=True)
     date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
 
