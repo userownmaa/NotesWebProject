@@ -15,5 +15,5 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     second_name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 
-    notes = orm.relationship('Notes', back_populates='user')
+    notes = orm.relationship('Note', back_populates='user')
 

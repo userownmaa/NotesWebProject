@@ -8,7 +8,7 @@ from flask_login import UserMixin
 from .db_session import SqlAlchemyBase
 
 
-class Notes(SqlAlchemyBase, UserMixin, SerializerMixin):
+class Note(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'notes'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
