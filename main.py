@@ -23,8 +23,8 @@ def main():
     db_session.global_init("db/blogs.db")
     app.register_blueprint(notes_api.notes_page, url_prefix='/')
     app.register_blueprint(auth_api.auth_page, url_prefix='/')
-    api.add_resource(resources.NotesListResource, '/notes')
-    api.add_resource(resources.NotesResource, '/notes/<int:id>')
+    # api.add_resource(resources.NotesListResource, '/notes')
+    # api.add_resource(resources.NotesResource, '/notes/<int:id>')
     app.run(debug=True)
 
 
