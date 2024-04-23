@@ -5,16 +5,35 @@
 <br />
 <h1 align="center">Заметки</h1>
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
+  <input
+    type="text"
+    class="form-control"
+    id="title"
+    name="title"
+    placeholder="Поле для заголовка"
+  />
+  <br />
+  <textarea
+    name="note"
+    id="note"
+    class="form-control"
+    placeholder="Поле для заметки"
+  ></textarea>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-outline-info">Добавить заметку</button>
+    <button type="submit" class="btn btn-secondary">Добавить заметку</button>
   </div>
 </form>
 <br />
 <form class="d-flex">
-  <input class="form-control me 2" type="search" placeholder="Поиск">
-  <button class="btn btn-outline-info" type="send">Поиск</button>
+  <input
+    id="search"
+    name="search"
+    class="form-control me 2"
+    type="search"
+    placeholder="Поиск"
+  />
+  <button class="btn btn-secondary" type="send">Поиск</button>
 </form>
 <br />
 <div class="list-group">
