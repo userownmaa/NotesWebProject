@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from data import db_session, notes_api, auth_api, resources
+from data import db_session, notes_api, auth_api
 from flask_login import LoginManager
 from data.users import User
 
