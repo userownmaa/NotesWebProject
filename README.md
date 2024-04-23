@@ -31,23 +31,23 @@ ____
 
 ### Bootstrap
 Классы **Bootstrap**, использованные в создании объектов:
-Навигационная панель
+#### Навигационная панель
 - navbar navbar-expand-lg navbar-dark bg-dark
 - navbar-toggler
 - collapse navbar-collapse
 - navbar-nav
 - nav-item nav-link
-Всплывающие сообщения
+#### Всплывающие сообщения
 - alert alert-danger
 - alert alert-success
-Кнопки
+#### Кнопки
 - btn-close
 - btn btn-secondary
-Поля ввода
+#### Поля ввода
 - d-flex
 - form-control
 - form-control me 2
 - d-flex w-100 justify-content-between
-Списки элеметнов
+#### Списки элеметнов
 - list-group
 - list-group-item list-group-item-light
