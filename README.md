@@ -1,5 +1,6 @@
 # **Веб-приложение «Заметки»**
 ____
+[Презентация](https://drive.google.com/drive/folders/167t_cZ_KHm2dUXBWp6B2EI9jJpSrhu8R?usp=drive_link)
 Автор: Момина Антонина
 
 ## Описание проекта
