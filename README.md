@@ -1,7 +1,8 @@
 # **Веб-приложение «Заметки»**
 ____
-[Презентация](https://drive.google.com/drive/folders/167t_cZ_KHm2dUXBWp6B2EI9jJpSrhu8R?usp=drive_link)
 Автор: Момина Антонина
+
+[Презентация](https://drive.google.com/drive/folders/167t_cZ_KHm2dUXBWp6B2EI9jJpSrhu8R?usp=drive_link)
 
 ## Описание проекта
 Проект представляет из себя сайт-аналог классического приложения «Заметки». 
