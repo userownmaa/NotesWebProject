@@ -21,11 +21,13 @@ def notes():
     db_sess = db_session.create_session()
 
     if request.method == 'POST':
+        title = request.form.get('title')
         note = request.form.get('note')
-        if len(note) < 1:
+        search = request.form.get('search')
+        if len(note) < 1 and len(title) < 1:
             flash('Пустое поле.', category='error')
         else:
-            new_note = Note(user_id=current_user.id, content=note)   # добавить поле для заголовка заметки
+            new_note = Note(user_id=current_user.id, title=title, content=note)
             db_sess.add(new_note)
             db_sess.commit()
             flash('Заметка добавлена.', category='success')
