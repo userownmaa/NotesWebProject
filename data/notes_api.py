@@ -24,15 +24,22 @@ def notes():
         title = request.form.get('title')
         note = request.form.get('note')
         search = request.form.get('search')
-        if len(note) < 1 and len(title) < 1:
-            flash('Пустое поле.', category='error')
-        else:
-            new_note = Note(user_id=current_user.id, title=title, content=note)
-            db_sess.add(new_note)
-            db_sess.commit()
-            flash('Заметка добавлена.', category='success')
+        cur_notes = []
+        if search:
+            all_notes = db_sess.query(Note).filter(Note.user == current_user)
+            for item in all_notes:
 
-    cur_notes = db_sess.query(Note).filter(Note.user == current_user)
+                if search in item.content:
+                    cur_notes.append(item)
+        elif title and note:
+            if len(note) < 1 and len(title) < 1:
+                flash('Пустое поле.', category='error')
+            else:
+                new_note = Note(user_id=current_user.id, title=title, content=note)
+                db_sess.add(new_note)
+                db_sess.commit()
+                flash('Заметка добавлена.', category='success')
+            cur_notes = db_sess.query(Note).filter(Note.user == current_user)
 
     return render_template('notes.html', user=current_user, notes=cur_notes)
 
