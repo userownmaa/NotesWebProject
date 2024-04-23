@@ -12,7 +12,11 @@ notes_page = Blueprint(
 
 
 @notes_page.route('/', methods=['GET', 'POST'])
-@login_required
+def home_page():
+    return render_template('home_page.html', user=current_user)
+
+
+@notes_page.route('/notes', methods=['GET', 'POST'])
 def notes():
     db_sess = db_session.create_session()
 

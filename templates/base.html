@@ -15,14 +15,13 @@
     />
     <title>{% block title %}Главная{% endblock %}</title>
   </head>
-  <body>
+  <body style="background-color:powderblue;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbar"
-      >
+        data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
@@ -38,9 +37,10 @@
       </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category == 'error' %}
     <div class="alert alert-danger alter-dismissable fade show" role="alert">
       {{ message }}
       <button type="button" class="close" data-dismiss="alert">
@@ -54,8 +54,10 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     <div class="container">{% block content %} {% endblock %}</div>
 

@@ -2,23 +2,30 @@
 {% block title %}Главная{% endblock %}
 {% block content %}
 
+<br />
 <h1 align="center">Заметки</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in notes %}
-  <li class="list-group-item">
-    {{ note.content }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul>
 <form method="POST">
   <textarea name="note" id="note" class="form-control"></textarea>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-primary">Добавить заметку</button>
+    <button type="submit" class="btn btn-outline-info">Добавить заметку</button>
   </div>
 </form>
+<br />
+<form class="d-flex">
+  <input class="form-control me 2" type="search" placeholder="Поиск">
+  <button class="btn btn-outline-info" type="send">Поиск</button>
+</form>
+<br />
+<div class="list-group">
+  {% for note in notes %}
+  <a href="#" class="list-group-item list-group-item-light">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Заголовок</h5>
+    </div>
+    <p class="mb-1">{{ note.content }}</p>
+  </a>
+  {% endfor %}
+</div>
 
 {% endblock %}
