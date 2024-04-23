@@ -19,10 +19,35 @@ ____
 - [x] Улучшить внешний вид сайта
 
 ## Реализация
-### Авторизация
 
 ### База данных
-База данных состоит из двух таблиц: **users** и **notes**. **users** хранит в себе информацию о пользователях: эл. почту, имя и фамилию, хэш пароля. **notes** хранит в себе содержимое записей и ID пользователей, которым принадлежат записи. Взаимодействие с базой данных происходит с помощью модулей **sqlalchemy** и **sqlalchemy_serializer**, модели создаются в классах **User** и **Note**, соединение с базой данных производят методы **global_init()** и **create_session**.
+База данных состоит из двух таблиц: **users** и **notes**. **users** хранит в себе информацию о пользователях: эл. почту, имя и фамилию, хэш пароля. **notes** хранит в себе содержимое записей и ID пользователей, которым принадлежат записи. Взаимодействие с базой данных происходит с помощью модулей **sqlalchemy** и **sqlalchemy_serializer**, модели создаются в классах **User** и **Note**, соединение с базой данных производят методы **global_init()** и **create_session()**.
+
 ### REST-API
+#### Авторизация
+Методы, обрабатывающие авторизацию: **login()** по роуту /login, **logout()** по роуту /logout, **signup()** по роуту /signup. 
+#### Работа приложения
+Методы, обрабатывающие работу приложения: **home_page()** по роуту /, **notes()** по роуту /notes, **edit()** по роуту /edit, **delete()**. 
 
 ### Bootstrap
+Классы **Bootstrap**, использованные в создании объектов:
+Навигационная панель
+- navbar navbar-expand-lg navbar-dark bg-dark
+- navbar-toggler
+- collapse navbar-collapse
+- navbar-nav
+- nav-item nav-link
+Всплывающие сообщения
+- alert alert-danger
+- alert alert-success
+Кнопки
+- btn-close
+- btn btn-secondary
+Поля ввода
+- d-flex
+- form-control
+- form-control me 2
+- d-flex w-100 justify-content-between
+Списки элеметнов
+- list-group
+- list-group-item list-group-item-light
