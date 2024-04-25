@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<br />
+<h1 align="center">Редактирование записи</h1>
+<form method="POST">
+  <input
+    type="text"
+    class="form-control"
+    id="title"
+    name="title"
+    value="{{ note.title }}"
+    placeholder="Заголовок">
+  <br />
+  <textarea
+    name="note"
+    id="note"
+    class="form-control"
+    placeholder="Заметка">{{ note.content }}</textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-secondary">Сохранить изменения</button>
+  </div>
+</form>
+
+{% endblock %}

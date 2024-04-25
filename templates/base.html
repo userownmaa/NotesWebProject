@@ -42,13 +42,21 @@
     {% for category, message in messages %}
     {% if category == 'error' %}
     <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      {{ message }}
-        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+      <div class="d-flex w-100 justify-content-between">
+        {{ message }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+      </div>
     </div>
     {% else %}
     <div class="alert alert-success alter-dismissable fade show" role="alert">
-      {{ message }}
-        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+      <div class="d-flex w-100 justify-content-between">
+        {{ message }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+      </div>
     </div>
     {% endif %}
     {% endfor %}
@@ -72,5 +80,19 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+  {% block javascript %}
+    <script type="text/javascript">
+      function delete_note(id) {
+        window.location.href = "/delete/" + id;
+      }
+    </script>
+    <script type="text/javascript">
+      function edit_note(id) {
+        window.location.href = "/edit/" + id;
+      }
+    </script>
+  {% endblock %}
+
   </body>
 </html>

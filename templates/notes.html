@@ -51,10 +51,14 @@
   <a href="#" class="list-group-item list-group-item-light">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{ note.title }}</h5>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
+      </div>
     </div>
     <p class="mb-1">{{ note.content }}</p>
-    <button class="btn btn-offline-secondary" type="send">Изменить</button>
-    <button type="button" class="btn-close" aria-label="Close"></button>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-offline-secondary" onClick="edit_note({{ note.id }})">Изменить</button>
+    </div>
   </a>
   {% endfor %}
 </div>
