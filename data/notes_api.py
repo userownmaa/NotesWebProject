@@ -31,6 +31,7 @@ def notes():
         cur_notes = []
         search = request.form.get('search')
         if search:
+            cur_groups = []
             all_notes = db_sess.query(Note).filter(Note.user == current_user, (Note.group_id == 0)).order_by(Note.date.desc())
             for item in all_notes:
                 if search in item.content or search in item.title:
@@ -51,6 +52,7 @@ def group(id):
         cur_notes = []
         search = request.form.get('search')
         if search:
+            cur_groups = []
             all_notes = db_sess.query(Note).filter(Note.user == current_user, (Note.group_id == id)).order_by(Note.date.desc())
             for item in all_notes:
                 if search in item.content or search in item.title:

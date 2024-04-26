@@ -3,7 +3,9 @@
 {% block content %}
 
 <br />
-<h1 align="center">Заметки</h1>
+<h1 align="center" style="">Заметки</h1>
+<br />
+<div style="height: 5px; background-color: grey;"></div>
 <br />
 <div class="d-grid gap-2 d-md-block" align="center">
   <button type="submit" class="btn btn-secondary" onClick="create_note()">Создать заметку</button>
@@ -37,7 +39,8 @@
     </div>
   {% endfor %}
 </div>
-
+<div style="height: 5px; background-color: grey;"></div>
+<br />
 <div class="row row-cols-1">
   {% for note in notes %}
     <div class="col">
