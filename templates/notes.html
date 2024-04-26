@@ -12,7 +12,7 @@
   <button type="submit" class="btn btn-light" onClick="create_group()">Создать группу</button>
 </div>
 <br />
-<div style="height: 5px; background-color: grey;"></div>
+<div style="height: 3px; background-color: grey;"></div>
 <br />
 <form class="d-flex" method="POST">
   <input
@@ -22,8 +22,8 @@
     type="search"
     placeholder="Поиск по группам"
   />
-  <button class="btn btn-secondary" type="send">Поиск</button>
-  <button class="btn btn-secondary" type="send" >Назад</button>
+  <button class="btn btn-secondary ms-1" type="send">Поиск</button>
+  <button class="btn btn-secondary ms-1" type="send" >Назад</button>
 </form>
 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
   {% for group in groups %}
@@ -41,7 +41,7 @@
     </div>
   {% endfor %}
 </div>
-<div style="height: 5px; background-color: grey;"></div>
+<div style="height: 3px; background-color: grey;"></div>
 <br />
 <form class="d-flex" method="POST">
   <input
@@ -51,8 +51,8 @@
     type="search"
     placeholder="Поиск по заметкам"
   />
-  <button class="btn btn-secondary" type="send">Поиск</button>
-  <button class="btn btn-secondary" type="send" >Назад</button>
+  <button class="btn btn-secondary ms-1" type="send">Поиск</button>
+  <button class="btn btn-secondary ms-1" type="send" >Назад</button>
 </form>
 <br />
 <div class="row row-cols-1">
