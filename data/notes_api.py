@@ -132,7 +132,7 @@ def delete_note(id):
     if note:
         db_sess.delete(note)
         db_sess.commit()
-    flash('Заметка удалена.', category='success')
+        flash('Заметка удалена.', category='success')
     if note.group_id == 0:
         return redirect('/notes')
     else:
@@ -143,10 +143,13 @@ def delete_note(id):
 def delete_group(id):
     db_sess = db_session.create_session()
     group = db_sess.query(Group).get(id)
+    group_notes = db_sess.query(Note).filter((Note.user == current_user), (Note.group_id == id))
     if group:
+        for item in group_notes:
+            item.group_id = 0
         db_sess.delete(group)
         db_sess.commit()
-    flash('Группа удалена.', category='success')
+        flash('Группа удалена.', category='success')
     return redirect('/notes')
 
 
