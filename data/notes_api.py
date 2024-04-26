@@ -27,18 +27,21 @@ def notes():
     cur_notes = db_sess.query(Note).filter((Note.user == current_user), (Note.group_id == 0)).order_by(Note.date.desc())
     cur_groups = db_sess.query(Group).filter(Group.user == current_user).order_by(Group.date.desc())
 
-    # if request.method == 'POST':
-    #     cur_notes = []
-    #     search = request.form.get('search') #####################
-    #     if search:
-    #         cur_groups = []
-    #         all_notes = db_sess.query(Note).filter(Note.user == current_user, (Note.group_id == 0)).order_by(Note.date.desc())
-    #         for item in all_notes:
-    #             if search in item.content or search in item.title:
-    #                 cur_notes.append(item)
-    #     else:
-    #         cur_notes = db_sess.query(Note).filter((Note.user == current_user), (Note.group_id == 0)).order_by(Note.date.desc())
-
+    if request.method == 'POST':
+        search_group = request.form.get('search_group')
+        search_note = request.form.get('search_note')
+        if search_group:
+            new_groups = []
+            for item in cur_groups:
+                if search_group in item.title or search_group in item.content:
+                    new_groups.append(item)
+            cur_groups = new_groups
+        elif search_note:
+            new_notes = []
+            for item in cur_notes:
+                if search_note in item.content or search_note in item.title:
+                    new_notes.append(item)
+            cur_notes = new_notes
     return render_template('notes.html', user=current_user, notes=cur_notes, groups=cur_groups)
 
 
@@ -49,16 +52,13 @@ def group(id):
     cur_group = db_sess.query(Group).get(id)
 
     if request.method == 'POST':
-        cur_notes = []
         search = request.form.get('search')
         if search:
-            cur_groups = []
-            all_notes = db_sess.query(Note).filter(Note.user == current_user, (Note.group_id == id)).order_by(Note.date.desc())
-            for item in all_notes:
+            new_notes = []
+            for item in cur_notes:
                 if search in item.content or search in item.title:
-                    cur_notes.append(item)
-        else:
-            cur_notes = db_sess.query(Note).filter((Note.user == current_user), (Note.group_id == id)).order_by(Note.date.desc())
+                    new_notes.append(item)
+            cur_notes = new_notes
     return render_template('group.html', user=current_user, notes=cur_notes, group=cur_group)
 
 
