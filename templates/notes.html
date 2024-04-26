@@ -43,16 +43,13 @@
     <div class="col">
         <div class="card">
           <div class="card-body">
-
             <div class="d-flex w-100 justify-content-between">
               <h5 class="card-title">{{ note.title }}</h5>
               <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
             </div>
             <p class="card-text">{{ note.content }}</p>
-
-<!--            <div class="d-grid gap-2 d-md-flex justify-content-md-end">-->
-              <button class="btn btn-outline-dark ms-1 float-end" onClick="edit_note({{ note.id }})">Изменить</button>
-<!--            </div>-->
+            <p class="card-text">Дата создания: {{ note.date.date() }}</p>
+            <button class="btn btn-secondary ms-1 float-end" onClick="edit_note({{ note.id }})">Изменить</button>
             <div class="dropdown">
                 <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="float:right">
                   Добавить в группу
@@ -63,7 +60,6 @@
                   {% endfor %}
                 </ul>
             </div>
-
           </div>
         </div>
       <br />

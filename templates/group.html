@@ -18,23 +18,25 @@
   <button class="btn btn-secondary" type="send">Назад</button>
 </form>
 <br />
-<div class="list-group">
+<div class="row row-cols-1">
   {% for note in notes %}
-  <a href="#" class="list-group-item list-group-item-light">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ note.title }}</h5>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
-      </div>
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="card-title">{{ note.title }}</h5>
+              <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
+            </div>
+            <p class="card-text">{{ note.content }}</p>
+            <p class="card-text">Дата создания: {{ note.date.date() }}</p>
+            <button class="btn btn-secondary ms-1 float-end" onClick="edit_note({{ note.id }})">Изменить</button>
+            <a class="btn btn-light" role="button" style="float:right" href="/delete-from-group/{{ group.id }}/{{ note.id }}">
+              Удалить из группы
+            </a>
+          </div>
+        </div>
+      <br />
     </div>
-    <p class="mb-1">{{ note.content }}</p>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-outline-dark ms-1 float-end" onClick="edit_note({{ note.id }})">Изменить</button>
-    </div>
-      <a class="btn btn-light" role="button" style="float:right" href="/delete-from-group/{{ group.id }}/{{ note.id }}">
-        Удалить из группы
-      </a>
-  </a>
   {% endfor %}
 </div>
 
