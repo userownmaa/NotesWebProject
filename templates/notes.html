@@ -8,17 +8,19 @@
 <div style="height: 5px; background-color: grey;"></div>
 <br />
 <div class="d-grid gap-2 d-md-block" align="center">
-  <button type="submit" class="btn btn-secondary" onClick="create_note()">Создать заметку</button>
-  <button type="submit" class="btn btn-secondary" onClick="create_group()">Создать группу</button>
+  <button type="submit" class="btn btn-light" onClick="create_note()">Создать заметку</button>
+  <button type="submit" class="btn btn-light" onClick="create_group()">Создать группу</button>
 </div>
+<br />
+<div style="height: 5px; background-color: grey;"></div>
 <br />
 <form class="d-flex" method="POST">
   <input
-    id="search"
-    name="search"
+    id="search_group"
+    name="search_group"
     class="form-control me 2"
     type="search"
-    placeholder="Поиск"
+    placeholder="Поиск по группам"
   />
   <button class="btn btn-secondary" type="send">Поиск</button>
   <button class="btn btn-secondary" type="send" >Назад</button>
@@ -40,6 +42,18 @@
   {% endfor %}
 </div>
 <div style="height: 5px; background-color: grey;"></div>
+<br />
+<form class="d-flex" method="POST">
+  <input
+    id="search_note"
+    name="search_note"
+    class="form-control me 2"
+    type="search"
+    placeholder="Поиск по заметкам"
+  />
+  <button class="btn btn-secondary" type="send">Поиск</button>
+  <button class="btn btn-secondary" type="send" >Назад</button>
+</form>
 <br />
 <div class="row row-cols-1">
   {% for note in notes %}

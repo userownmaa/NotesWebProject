@@ -59,8 +59,8 @@ def signup():
             flash('Некорректный адрес почты.', category='error')
         elif len(email) < 3:
             flash('Длина адреса почты должна быть не менее 3 символов.', category='error')
-        elif len(password1) < 8:
-            flash('Длина пароля должна быть не менее 8 символов.', category='error')
+        elif len(password1) < 6:
+            flash('Длина пароля должна быть не менее 6 символов.', category='error')
         elif len(password1) > 100:
             flash('Длина пароля должна быть менее 100 символов.', category='error')
         elif password1 != password2:
