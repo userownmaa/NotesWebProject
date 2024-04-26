@@ -41,22 +41,14 @@
     {% if messages %}
     {% for category, message in messages %}
     {% if category == 'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      <div class="d-flex w-100 justify-content-between">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ message }}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
-        </div>
-      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-      <div class="d-flex w-100 justify-content-between">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ message }}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
-        </div>
-      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endif %}
     {% endfor %}
@@ -70,21 +62,21 @@
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
     ></script>
 
-  {% block javascript %}
+
+    {% block javascript %}
     <script type="text/javascript">
       function delete_note(id) {
-        window.location.href = "/delete/" + id;
+        window.location.href = "/delete/note/" + id;
+      }
+    </script>
+    <script type="text/javascript">
+      function delete_group(id) {
+        window.location.href = "/delete/group/" + id;
       }
     </script>
     <script type="text/javascript">
@@ -92,7 +84,22 @@
         window.location.href = "/edit/" + id;
       }
     </script>
-  {% endblock %}
+    <script type="text/javascript">
+      function create_note() {
+        window.location.href = "/create/note"
+      }
+    </script>
+    <script type="text/javascript">
+      function create_group() {
+        window.location.href = "/create/group"
+      }
+    </script>
+    <script type="text/javascript">
+      function open_group(id) {
+        window.location.href = "/group/" + id;
+      }
+    </script>
+    {% endblock %}
 
   </body>
 </html>

@@ -1,3 +1,5 @@
+import datetime
+
 import sqlalchemy
 from sqlalchemy.util.preloaded import orm
 from sqlalchemy_serializer import SerializerMixin
@@ -14,6 +16,8 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     first_name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     second_name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
 
     notes = orm.relationship('Note', back_populates='user')
+    groups = orm.relationship('Group', back_populates='user')
 

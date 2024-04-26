@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Создать группу{% endblock %}
+{% block content %}
+<br />
+<h1 align="center">Создание группы</h1>
+<br />
+<form method="POST">
+  <input
+    type="text"
+    class="form-control"
+    id="title"
+    name="title"
+    placeholder="Название">
+  <br />
+  <textarea
+    name="description"
+    id="description"
+    class="form-control"
+    placeholder="Описание"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-secondary">Создать</button>
+  </div>
+</form>
+
+{% endblock %}

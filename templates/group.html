@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Группа{% endblock %}
+{% block content %}
+
+<br />
+<h1 align="center">{{ group.title }}</h1>
+<h3 align="center">{{ group.content }}</h3>
+<br />
+<form class="d-flex" method="POST">
+  <input
+    id="search"
+    name="search"
+    class="form-control me 2"
+    type="search"
+    placeholder="Поиск"
+  />
+  <button class="btn btn-secondary" type="send">Поиск</button>
+  <button class="btn btn-secondary" type="send">Назад</button>
+</form>
+<br />
+<div class="list-group">
+  {% for note in notes %}
+  <a href="#" class="list-group-item list-group-item-light">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ note.title }}</h5>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
+      </div>
+    </div>
+    <p class="mb-1">{{ note.content }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-offline-secondary" onClick="edit_note({{ note.id }})">Изменить</button>
+    </div>
+      <a class="btn btn-light" role="button" style="float:right" href="/delete-from-group/{{ group.id }}/{{ note.id }}">
+        Удалить из группы
+      </a>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock %}

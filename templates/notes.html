@@ -1,29 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Главная{% endblock %}
+{% block title %}Заметки{% endblock %}
 {% block content %}
 
 <br />
 <h1 align="center">Заметки</h1>
-<form method="POST">
-  <input
-    type="text"
-    class="form-control"
-    id="title"
-    name="title"
-    placeholder="Заголовок"
-  />
-  <br />
-  <textarea
-    name="note"
-    id="note"
-    class="form-control"
-    placeholder="Заметка"
-  ></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-secondary">Добавить заметку</button>
-  </div>
-</form>
+<br />
+<div class="d-grid gap-2 d-md-block" align="center">
+  <button type="submit" class="btn btn-secondary" onClick="create_note()">Создать заметку</button>
+  <button type="submit" class="btn btn-secondary" onClick="create_group()">Создать группу</button>
+</div>
 <br />
 <form class="d-flex" method="POST">
   <input
@@ -34,33 +19,53 @@
     placeholder="Поиск"
   />
   <button class="btn btn-secondary" type="send">Поиск</button>
-  <button class="btn btn-secondary" type="send">Назад</button>
+  <button class="btn btn-secondary" type="send" >Назад</button>
 </form>
-<br />
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="search_title" id="search_title" autocomplete="off">
-  <label class="btn btn-secondary" for="search_title" id="btn_search_title">Поиск по заголовку</label>
-
-  <input type="radio" class="btn-check" name="search_all" id="search_all" autocomplete="off">
-  <label class="btn btn-secondary" for="search_all" id="btn_search_all">Поиск по всем данным</label>
+<div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+  {% for group in groups %}
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="card-title">{{ group.title }}</h5>
+              <button type="button" class="btn-close" aria-label="Close" onClick="delete_group({{ group.id }})"></button>
+            </div>
+            <p class="card-text">{{ group.content }}</p>
+            <a class="btn btn-secondary" onClick="open_group({{ group.id }})">Открыть</a>
+          </div>
+        </div>
+    </div>
+  {% endfor %}
 </div>
-<br />
-<br />
 <div class="list-group">
   {% for note in notes %}
   <a href="#" class="list-group-item list-group-item-light">
+
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{ note.title }}</h5>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn-close" aria-label="Close" onClick="delete_note({{ note.id }})"></button>
       </div>
     </div>
-    <p class="mb-1">{{ note.content }}</p>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-offline-secondary" onClick="edit_note({{ note.id }})">Изменить</button>
-    </div>
+
+      <p class="mb-1">{{ note.content }}</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-offline-secondary" onClick="edit_note({{ note.id }})">Изменить</button>
+      </div>
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="float:right">
+          Добавить в группу
+        </a>
+        <ul class="dropdown-menu">
+          {% for group in groups %}
+            <li><a class="dropdown-item" href="/add-to-group/{{ group.id }}/{{ note.id }}">{{ group.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
   </a>
   {% endfor %}
 </div>
+<br />
 
 {% endblock %}

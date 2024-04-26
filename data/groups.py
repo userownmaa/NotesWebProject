@@ -8,15 +8,14 @@ from flask_login import UserMixin
 from .db_session import SqlAlchemyBase
 
 
-class Note(SqlAlchemyBase, UserMixin, SerializerMixin):
-    __tablename__ = 'notes'
+class Group(SqlAlchemyBase, UserMixin, SerializerMixin):
+    __tablename__ = 'groups'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    content = sqlalchemy.Column(sqlalchemy.String(10000), nullable=True)
+    content = sqlalchemy.Column(sqlalchemy.String(100), nullable=True)
     date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
-    group_id = sqlalchemy.Column(sqlalchemy.Integer, default=False)
 
     user = orm.relationship('User')
-    # group = orm.relationship('Group')
+    # notes = orm.relationship('Note', back_populates='group')
