@@ -33,13 +33,13 @@ def notes():
         if search_group:
             new_groups = []
             for item in cur_groups:
-                if search_group in item.title or search_group in item.content:
+                if search_group.lower() in item.title.lower() or search_group.lower() in item.content.lower():
                     new_groups.append(item)
             cur_groups = new_groups
         elif search_note:
             new_notes = []
             for item in cur_notes:
-                if search_note in item.content or search_note in item.title:
+                if search_note.lower() in item.content.lower() or search_note.lower() in item.title.lower():
                     new_notes.append(item)
             cur_notes = new_notes
     return render_template('notes.html', user=current_user, notes=cur_notes, groups=cur_groups)
@@ -56,7 +56,7 @@ def group(id):
         if search:
             new_notes = []
             for item in cur_notes:
-                if search in item.content or search in item.title:
+                if search.lower() in item.content.lower() or search.lower() in item.title.lower():
                     new_notes.append(item)
             cur_notes = new_notes
     return render_template('group.html', user=current_user, notes=cur_notes, group=cur_group)
